@@ -187,64 +187,94 @@ button { font-family: inherit; cursor: pointer; }
    ============================================================ */
 .gc-main {
   max-width: var(--gc-max); margin: 0 auto;
-  display: grid; grid-template-columns: 300px 1fr;
+  display: grid; grid-template-columns: 280px 1fr;
   min-height: 620px;
+  background: var(--gc-bg);
 }
 
 /* ============================================================
-   SIDEBAR — white bg, topic cards
+   SIDEBAR — Berry dark panel, matches greenhead.ac.uk IN THIS SECTION style
    ============================================================ */
 .gc-sidebar {
-  background: var(--gc-white);
-  border-right: 1px solid var(--gc-border);
+  background: var(--gc-berry);
+  border-radius: 12px;
+  margin: 20px 16px 20px 20px;
   padding: 24px 20px;
+  align-self: start; /* Don't stretch full height */
 }
 .gc-sidebar h2 {
-  font-size: 11px; font-weight: 800;
-  color: var(--gc-mist);
-  text-transform: uppercase; letter-spacing: 1px;
-  margin-bottom: 14px;
+  font-size: 13px; font-weight: 800;
+  color: var(--gc-white);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 16px;
 }
 
+/* Topic links — simple text on Berry background */
 .gc-topic {
-  width: 100%; display: flex; align-items: center; gap: 12px;
-  padding: 11px 12px; border: 1px solid var(--gc-border);
-  border-radius: var(--gc-radius); margin-bottom: 8px;
-  background: var(--gc-white); cursor: pointer; text-align: left;
-  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  width: 100%;
+  display: block;
+  padding: 8px 0;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s;
+  color: var(--gc-mustard);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
 }
-.gc-topic:hover {
-  border-color: var(--gc-forest); background: var(--gc-forest-light);
-  transform: translateX(2px);
-}
-.gc-topic:active { transform: translateX(0); }
-.gc-topic:focus-visible { outline: 3px solid var(--gc-mustard); outline-offset: 2px; }
+.gc-topic:last-of-type { border-bottom: none; }
+.gc-topic:hover { color: var(--gc-white); }
+.gc-topic:focus-visible { outline: 2px solid var(--gc-mustard); outline-offset: 2px; }
 
-.gc-topic-icon {
-  width: 38px; height: 38px; border-radius: var(--gc-radius);
-  background: var(--gc-forest-light);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--gc-forest); flex-shrink: 0; transition: background 0.15s;
-}
-.gc-topic:hover .gc-topic-icon { background: rgba(0,83,76,0.14); }
+/* Hide icons and arrows — not needed in this style */
+.gc-topic-icon { display: none; }
+.gc-topic-arrow { display: none; }
 
-.gc-topic-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
-.gc-topic-text strong { font-size: 13px; font-weight: 700; color: var(--gc-dark); }
-.gc-topic-text span   { font-size: 11.5px; color: #666; }
-
-.gc-topic-arrow { color: var(--gc-mist); flex-shrink: 0; opacity: 0; transition: opacity 0.15s; }
-.gc-topic:hover .gc-topic-arrow { opacity: 1; }
+.gc-topic-text { display: flex; flex-direction: column; gap: 1px; }
+.gc-topic-text strong { font-size: 14px; font-weight: 600; color: inherit; }
+.gc-topic-text span   { font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 400; }
 
 .gc-sidebar-footer {
   margin-top: 20px; padding-top: 16px;
-  border-top: 1px solid var(--gc-border); text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.2);
 }
-.gc-sidebar-footer p { font-size: 12px; color: #777; margin-bottom: 6px; }
+.gc-sidebar-footer p { font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 6px; }
 .gc-contact-link {
-  font-size: 13px; font-weight: 700; color: var(--gc-forest);
+  font-size: 13px; font-weight: 700; color: var(--gc-mustard);
   text-decoration: underline; text-underline-offset: 2px;
 }
-.gc-contact-link:hover { color: var(--gc-autumn); }
+.gc-contact-link:hover { color: var(--gc-white); }
+
+/* ============================================================
+   PAGE INTRO — white content area above chat
+   ============================================================ */
+.gc-content-area {
+  background: var(--gc-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.gc-page-intro {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid var(--gc-border);
+}
+.gc-page-intro h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gc-forest);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.gc-page-intro p {
+  font-size: 15px;
+  color: var(--gc-dark);
+  line-height: 1.7;
+  max-width: 680px;
+}
+.gc-page-intro p + p { margin-top: 8px; }
 
 /* ============================================================
    CHAT AREA
@@ -478,18 +508,21 @@ button { font-family: inherit; cursor: pointer; }
 
   /* Main layout stacks */
   .gc-main { grid-template-columns: 1fr; }
-  .gc-sidebar { border-right: none; border-bottom: 1px solid var(--gc-border); order: 2; }
-  .gc-chat-wrap { order: 1; } /* Chat first on mobile */
+  .gc-sidebar {
+    border-radius: 0;
+    margin: 0;
+    order: 2; /* Topic links below chat on tablet/mobile */
+  }
+  .gc-content-area { order: 1; }
+  .gc-chat-wrap { order: 1; }
 
-  /* Topic cards go to 2-column grid on tablet */
-  .gc-sidebar { padding: 20px; }
-  .gc-sidebar h2 { margin-bottom: 12px; }
+  /* Sidebar — keep Berry style but adjust spacing */
+  .gc-sidebar { padding: 20px 16px; }
   .gc-topics-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 0;
   }
-  .gc-topic { margin-bottom: 0; }
 
   /* Footer 2 columns */
   .gc-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
