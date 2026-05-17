@@ -71,17 +71,8 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: space-between; gap: 16px;
 }
 
-.gc-logo { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
-.gc-logo-gc {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 58px; font-weight: 400; font-style: italic;
-  color: var(--gc-white); letter-spacing: -1px; line-height: 1;
-}
-.gc-logo-words {
-  display: flex; flex-direction: column; gap: 2px;
-}
-.gc-logo-name { color: var(--gc-white); font-size: 22px; font-weight: 600; line-height: 1.2; }
-.gc-logo-tag  { color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 400; text-align: center; }
+.gc-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.gc-logo-img { height: 52px; width: auto; display: block; }
 
 .gc-header-right { display: flex; align-items: center; gap: 8px; }
 
@@ -467,9 +458,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 640px) {
   .gc-header-inner { padding: 0 16px; height: 68px; }
-  .gc-logo-gc      { font-size: 42px; }
-  .gc-logo-name    { font-size: 17px; }
-  .gc-logo-tag     { font-size: 12px; }
+  .gc-logo-img     { height: 40px; }
   .gc-banner-text h1 { font-size: 20px; }
   .gc-nav-item     { padding: 11px 12px; font-size: 13px; }
   .gc-banner-meta  { display: none; }
