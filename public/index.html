@@ -204,19 +204,14 @@
       <!-- *** PASTE YOUR COPILOT STUDIO EMBED HERE *** -->
       <!-- Replace the div below with the <script> tag from Copilot Studio → Channels → Custom website -->
     <div id="copilot-embed">
-  <div id="copilot-embed">
-  <div id="webchat"></div>
-</div>
-
-<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
-<script>
-(async function () {
+  (async function () {
   try {
     const res = await fetch('/api/copilot-token');
     const data = await res.json();
     WebChat.renderWebChat({
       directLine: WebChat.createDirectLine({
         token: data.token,
+        domain: 'https://europe.directline.botframework.com/v3/directline',
         webSockets: false
       }),
       styleOptions: {
