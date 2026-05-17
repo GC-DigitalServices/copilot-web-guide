@@ -73,25 +73,25 @@ button { font-family: inherit; cursor: pointer; }
 
 .gc-logo { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
 .gc-logo-gc {
-  font-size: 56px; font-weight: 800; font-style: italic;
-  color: var(--gc-white); letter-spacing: -3px; line-height: 1;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 58px; font-weight: 400; font-style: italic;
+  color: var(--gc-white); letter-spacing: -1px; line-height: 1;
 }
 .gc-logo-words {
-  border-left: 1px solid rgba(255,255,255,0.3);
-  padding-left: 16px; display: flex; flex-direction: column; gap: 3px;
+  display: flex; flex-direction: column; gap: 2px;
 }
-.gc-logo-name { color: var(--gc-white); font-size: 20px; font-weight: 700; line-height: 1.2; }
-.gc-logo-tag  { color: rgba(255,255,255,0.68); font-size: 13px; font-weight: 400; }
+.gc-logo-name { color: var(--gc-white); font-size: 22px; font-weight: 600; line-height: 1.2; }
+.gc-logo-tag  { color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 400; text-align: center; }
 
 .gc-header-right { display: flex; align-items: center; gap: 8px; }
 
 .gc-quick-links {
   display: flex; align-items: center; gap: 6px;
-  color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 600;
-  padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 20px; transition: background 0.15s; white-space: nowrap;
+  color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 600;
+  padding: 6px 4px;
+  transition: color 0.15s; white-space: nowrap;
 }
-.gc-quick-links:hover { background: rgba(255,255,255,0.1); color: white; }
+.gc-quick-links:hover { color: white; }
 
 .gc-socials { display: flex; align-items: center; gap: 2px; margin: 0 4px; }
 .gc-socials a {
@@ -102,16 +102,16 @@ button { font-family: inherit; cursor: pointer; }
 }
 .gc-socials a:hover { background: rgba(255,255,255,0.12); color: white; }
 
-/* Accessibility btn — Autumn bg, white text (4.64:1 ✅ AA) */
+/* Accessibility btn — white outline, Forest text — matches real site */
 .gc-accessibility-btn {
   display: flex; align-items: center; gap: 7px;
-  background: var(--gc-autumn); color: var(--gc-white);
+  background: white; color: var(--gc-forest);
   font-size: 13px; font-weight: 700;
   padding: 9px 18px; border-radius: 24px;
-  border: 2px solid rgba(255,255,255,0.25);
-  transition: background 0.15s; white-space: nowrap;
+  border: 2px solid white;
+  transition: background 0.15s, color 0.15s; white-space: nowrap;
 }
-.gc-accessibility-btn:hover { background: var(--gc-autumn-dark); }
+.gc-accessibility-btn:hover { background: rgba(255,255,255,0.88); }
 
 /* ============================================================
    NAV BAR — white bg, Autumn active
@@ -467,8 +467,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 640px) {
   .gc-header-inner { padding: 0 16px; height: 68px; }
-  .gc-logo-gc      { font-size: 40px; }
-  .gc-logo-name    { font-size: 16px; }
+  .gc-logo-gc      { font-size: 42px; }
+  .gc-logo-name    { font-size: 17px; }
+  .gc-logo-tag     { font-size: 12px; }
   .gc-banner-text h1 { font-size: 20px; }
   .gc-nav-item     { padding: 11px 12px; font-size: 13px; }
   .gc-banner-meta  { display: none; }
