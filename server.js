@@ -16,6 +16,25 @@ app.use(express.json());
 // Serve the student-guide static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ── Copilot token proxy ────────────────────────────────────
+// Fetches a Direct Line token from Microsoft server-side
+// to avoid CORS errors in the browser
+app.get('/api/copilot-token', async function (req, res) {
+  try {
+    const endpoint = 'https://default83e7b69b8eb345a6bab522e3147641.77.environment.api.powerplatform.com/powervirtualagents/botsbyschema/ghc_NewStudentGuide/directline/token?api-version=2022-03-01-preview';
+    const response = await fetch(endpoint);
+    if (!response.ok) {
+      console.error('Token fetch failed:', response.status, await response.text());
+      return res.status(502).json({ error: 'Could not get token from Microsoft' });
+    }
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    console.error('Copilot token error:', err);
+    res.status(500).json({ error: 'Token proxy failed' });
+  }
+});
+
 // ── Feedback endpoint ──────────────────────────────────────
 // Stores feedback as newline-delimited JSON in /data/feedback.jsonl
 // Each line: { helpful, comment, page, ts }

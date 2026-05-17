@@ -210,24 +210,30 @@
 <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
 <script>
 (async function () {
-  const tokenEndpoint = 'https://default83e7b69b8eb345a6bab522e3147641.77.environment.api.powerplatform.com/powervirtualagents/botsbyschema/ghc_NewStudentGuide/directline/token?api-version=2022-03-01-preview';
-
-  const { token } = await fetch(tokenEndpoint).then(r => r.json());
-
-  WebChat.renderWebChat({
-    directLine: WebChat.createDirectLine({ token }),
-    styleOptions: {
-      primaryFont: "'Karla', sans-serif",
-      accent: '#00534C',
-      botAvatarBackgroundColor: '#00534C',
-      bubbleBackground: '#f0f4f3',
-      bubbleBorderRadius: 8,
-      userBubbleBackground: '#00534C',
-      userBubbleTextColor: '#ffffff',
-      userBubbleBorderRadius: 8,
-      sendBoxBackground: '#ffffff',
-    }
-  }, document.getElementById('webchat'));
+  try {
+    const res = await fetch('/api/copilot-token');
+    if (!res.ok) throw new Error('Token failed: ' + res.status);
+    const { token } = await res.json();
+    WebChat.renderWebChat({
+      directLine: WebChat.createDirectLine({ token }),
+      styleOptions: {
+        primaryFont: "'Karla', sans-serif",
+        accent: '#00534C',
+        botAvatarBackgroundColor: '#00534C',
+        bubbleBackground: '#f0f4f3',
+        bubbleBorderRadius: 8,
+        userBubbleBackground: '#00534C',
+        userBubbleTextColor: '#ffffff',
+        userBubbleBorderRadius: 8,
+        sendBoxBackground: '#ffffff',
+        hideUploadButton: true,
+      }
+    }, document.getElementById('webchat'));
+  } catch (err) {
+    console.error('Chat error:', err);
+    document.getElementById('webchat').innerHTML =
+      '<p style="padding:24px;color:#666;font-size:14px;">Chat is temporarily unavailable. Please <a href="https://www.greenhead.ac.uk/contact-us" style="color:#00534C;font-weight:700;">contact the college</a> directly.</p>';
+  }
 })();
 </script>
 
