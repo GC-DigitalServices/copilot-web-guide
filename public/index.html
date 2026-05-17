@@ -204,6 +204,7 @@
       <!-- *** PASTE YOUR COPILOT STUDIO EMBED HERE *** -->
       <!-- Replace the div below with the <script> tag from Copilot Studio → Channels → Custom website -->
     <div id="copilot-embed">
+  <div id="copilot-embed">
   <div id="webchat"></div>
 </div>
 
@@ -212,10 +213,12 @@
 (async function () {
   try {
     const res = await fetch('/api/copilot-token');
-    if (!res.ok) throw new Error('Token failed: ' + res.status);
-    const { token } = await res.json();
+    const data = await res.json();
     WebChat.renderWebChat({
-      directLine: WebChat.createDirectLine({ token }),
+      directLine: WebChat.createDirectLine({
+        token: data.token,
+        webSockets: false
+      }),
       styleOptions: {
         primaryFont: "'Karla', sans-serif",
         accent: '#00534C',
@@ -225,14 +228,12 @@
         userBubbleBackground: '#00534C',
         userBubbleTextColor: '#ffffff',
         userBubbleBorderRadius: 8,
-        sendBoxBackground: '#ffffff',
         hideUploadButton: true,
       }
     }, document.getElementById('webchat'));
   } catch (err) {
-    console.error('Chat error:', err);
     document.getElementById('webchat').innerHTML =
-      '<p style="padding:24px;color:#666;font-size:14px;">Chat is temporarily unavailable. Please <a href="https://www.greenhead.ac.uk/contact-us" style="color:#00534C;font-weight:700;">contact the college</a> directly.</p>';
+      '<p style="padding:24px;color:#666;">Chat unavailable. <a href="https://www.greenhead.ac.uk/contact-us" style="color:#00534C;">Contact the college</a>.</p>';
   }
 })();
 </script>
