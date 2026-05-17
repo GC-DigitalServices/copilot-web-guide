@@ -324,6 +324,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 #webchat > div { height: 100%; }
 
+#webchat .webchat__bubble__content {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+#webchat .webchat__bubble {
+  max-width: calc(100% - 52px) !important;
+}
+
 /* ============================================================
    FEEDBACK — Mustard top strip signals it's interactive
    ============================================================ */
