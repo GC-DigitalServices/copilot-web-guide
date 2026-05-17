@@ -6,69 +6,29 @@
 (function () {
   'use strict';
 
-  // ── Topic card click → send question to Copilot chat ──────
-  // Copilot Studio's website embed does not expose a JS API to
-  // inject messages. The most reliable approach is to populate
-  // the chat input and focus it, prompting the student to send.
-  // For full programmatic sending, upgrade to Direct Line channel.
-
+  // ── Topic card click → send question via WebChat store ────
   const topics = document.querySelectorAll('.gc-topic');
-  const copilotFrame = document.querySelector('#copilot-embed iframe');
 
   topics.forEach(function (btn) {
     btn.addEventListener('click', function () {
       const question = btn.getAttribute('data-question');
       if (!question) return;
 
-      // Scroll the chat into view on mobile
+      // Scroll chat into view on mobile
       const chatWrap = document.querySelector('.gc-chat-wrap');
       if (chatWrap) {
         chatWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      // Attempt to post message to Copilot iframe (works if same origin or
-      // if Copilot Studio supports postMessage — test after embed is live)
-      if (copilotFrame && copilotFrame.contentWindow) {
-        try {
-          copilotFrame.contentWindow.postMessage(
-            { type: 'sendMessage', text: question },
-            '*'
-          );
-        } catch (e) {
-          // Cross-origin restriction — fallback: copy to clipboard
-          copyToClipboard(question);
-          showCopiedToast(question);
-        }
+      // Send directly to Bot Framework WebChat store
+      if (window.gcChatStore) {
+        window.gcChatStore.dispatch({
+          type: 'WEB_CHAT/SEND_MESSAGE',
+          payload: { text: question }
+        });
       }
     });
   });
-
-  function copyToClipboard(text) {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).catch(function () {});
-    }
-  }
-
-  function showCopiedToast(question) {
-    // Simple toast telling user to paste the question
-    const existing = document.getElementById('gc-toast');
-    if (existing) existing.remove();
-
-    const toast = document.createElement('div');
-    toast.id = 'gc-toast';
-    toast.textContent = 'Question copied — paste it into the chat below';
-    toast.style.cssText = [
-      'position:fixed', 'bottom:24px', 'left:50%', 'transform:translateX(-50%)',
-      'background:#1a5c4a', 'color:white', 'padding:10px 20px',
-      'border-radius:6px', 'font-size:14px', 'font-weight:600',
-      'z-index:9999', 'box-shadow:0 4px 12px rgba(0,0,0,0.2)',
-      'transition:opacity 0.3s'
-    ].join(';');
-    document.body.appendChild(toast);
-
-    setTimeout(function () { toast.style.opacity = '0'; }, 2500);
-    setTimeout(function () { toast.remove(); }, 3000);
-  }
 
   // ── Feedback mechanism ────────────────────────────────────
   const btnYes       = document.getElementById('btn-helpful');

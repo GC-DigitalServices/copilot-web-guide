@@ -475,7 +475,8 @@ button { font-family: inherit; cursor: pointer; }
 
   /* Main layout stacks */
   .gc-main { grid-template-columns: 1fr; }
-  .gc-sidebar { border-right: none; border-bottom: 1px solid var(--gc-border); }
+  .gc-sidebar { border-right: none; border-bottom: 1px solid var(--gc-border); order: 2; }
+  .gc-chat-wrap { order: 1; } /* Chat first on mobile */
 
   /* Topic cards go to 2-column grid on tablet */
   .gc-sidebar { padding: 20px; }

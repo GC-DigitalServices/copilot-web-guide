@@ -242,6 +242,8 @@
         return next(action);
       });
 
+      window.gcChatStore = store;
+
       WebChat.renderWebChat({
         directLine: WebChat.createDirectLine({
           token: data.token,
