@@ -141,53 +141,19 @@ button { font-family: inherit; cursor: pointer; }
 .gc-nav-active:hover { background: var(--gc-autumn); color: var(--gc-white); }
 
 /* ============================================================
-   HERO PHOTO BANNER — full-width, matches real site style
+   HERO PHOTO BANNER — full-bleed, no overlay, matches real site
    ============================================================ */
 .gc-hero-photo {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: 460px;
   background-image: url('https://www.greenhead.ac.uk/wp-content/uploads/2019/09/07-BELIEVE-AND-ACHIEVE-3.jpg');
   background-size: cover;
   background-position: center 30%;
   overflow: hidden;
 }
 
-.gc-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 83, 76, 0.82) 0%,
-    rgba(0, 83, 76, 0.55) 50%,
-    rgba(0, 83, 76, 0.1) 100%
-  );
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-}
-
-.gc-hero-text {
-  max-width: 560px;
-  color: var(--gc-white);
-}
-.gc-hero-text h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  line-height: 1.2;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
-}
-.gc-hero-text p {
-  font-size: 17px;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 20px;
-  line-height: 1.6;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-}
-.gc-hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
-
-/* Colour bars at base of photo */
+/* Colour bars pinned to base of image */
 .gc-hero-bars {
   position: absolute;
   bottom: 0;
@@ -199,10 +165,7 @@ button { font-family: inherit; cursor: pointer; }
 .gc-hero-bars .bar { flex: 1; }
 
 @media (max-width: 640px) {
-  .gc-hero-photo { height: 300px; }
-  .gc-hero-overlay { padding: 0 20px; }
-  .gc-hero-text h1 { font-size: 26px; }
-  .gc-hero-text p  { font-size: 15px; }
+  .gc-hero-photo { height: 260px; }
 }
 
 /* Mustard badge — Mustard bg, dark text (10.56:1 ✅) */
