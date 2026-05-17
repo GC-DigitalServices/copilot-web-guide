@@ -333,24 +333,125 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================================
-   FOOTER — Forest dark, white text
+   COLOUR STRIP — 5-segment brand colour bar above footer
    ============================================================ */
-.gc-footer { background: var(--gc-forest-dark); color: rgba(255,255,255,0.75); padding: 32px 24px; }
-.gc-footer-inner { max-width: var(--gc-max); margin: 0 auto; }
-.gc-footer-logo { display: flex; align-items: center; margin-bottom: 16px; }
-.gc-footer-links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
-.gc-footer-links a {
-  font-size: 13px; color: rgba(255,255,255,0.78);
-  text-decoration: underline; text-underline-offset: 2px; transition: color 0.15s;
+.gc-colour-strip {
+  display: flex;
+  height: 8px;
 }
-.gc-footer-links a:hover { color: var(--gc-white); }
+.gc-colour-strip span {
+  flex: 1;
+}
+
+/* ============================================================
+   FOOTER — 4-column layout matching greenhead.ac.uk
+   ============================================================ */
+.gc-footer {
+  background: var(--gc-forest);
+  color: rgba(255,255,255,0.82);
+}
+.gc-footer-inner {
+  max-width: var(--gc-max);
+  margin: 0 auto;
+  padding: 48px 24px 40px;
+}
+.gc-footer-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.gc-footer-col h3 {
+  color: var(--gc-white);
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* Address */
+.gc-footer-col address {
+  font-style: normal;
+  line-height: 2;
+  font-size: 14px;
+  color: rgba(255,255,255,0.78);
+}
+
+/* Lists */
+.gc-footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gc-footer-col ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.78);
+}
+.gc-footer-col ul li svg {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.5);
+}
+.gc-footer-col ul li a {
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.gc-footer-col ul li a:hover { color: var(--gc-white); }
+
+/* Bottom bar */
+.gc-footer-bottom {
+  background: var(--gc-forest-dark);
+  padding: 20px 24px;
+}
+.gc-footer-bottom-inner {
+  max-width: var(--gc-max);
+  margin: 0 auto;
+}
+.gc-footer-bottom-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.gc-footer-bottom-links a {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.gc-footer-bottom-links a:hover { color: var(--gc-white); }
+
+.gc-footer-copy {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 6px;
+}
+.gc-footer-copy a { color: rgba(255,255,255,0.55); text-decoration: underline; }
+.gc-footer-copy a:hover { color: white; }
+
 .gc-footer-disclaimer {
-  font-size: 12px; color: rgba(255,255,255,0.52);
-  max-width: 680px; line-height: 1.7; margin-bottom: 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.38);
+  max-width: 680px;
+  line-height: 1.6;
 }
-.gc-footer-disclaimer a { color: rgba(255,255,255,0.7); text-decoration: underline; }
+.gc-footer-disclaimer a { color: rgba(255,255,255,0.5); text-decoration: underline; }
 .gc-footer-disclaimer a:hover { color: white; }
-.gc-footer-copy { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+/* Footer responsive */
+@media (max-width: 900px) {
+  .gc-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+}
+@media (max-width: 560px) {
+  .gc-footer-cols { grid-template-columns: 1fr; gap: 28px; }
+  .gc-footer-inner { padding: 36px 16px 28px; }
+  .gc-footer-bottom { padding: 16px; }
+  .gc-footer-bottom-links { gap: 14px; }
+}
 
 /* ============================================================
    RESPONSIVE
