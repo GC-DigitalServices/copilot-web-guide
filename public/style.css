@@ -66,22 +66,22 @@ button { font-family: inherit; cursor: pointer; }
 }
 .gc-header-inner {
   max-width: var(--gc-max); margin: 0 auto;
-  padding: 0 24px; height: 68px;
+  padding: 0 24px; height: 84px;
   display: flex; align-items: center;
   justify-content: space-between; gap: 16px;
 }
 
-.gc-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex-shrink: 0; }
+.gc-logo { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
 .gc-logo-gc {
-  font-size: 38px; font-weight: 800; font-style: italic;
-  color: var(--gc-white); letter-spacing: -2px; line-height: 1;
+  font-size: 56px; font-weight: 800; font-style: italic;
+  color: var(--gc-white); letter-spacing: -3px; line-height: 1;
 }
 .gc-logo-words {
   border-left: 1px solid rgba(255,255,255,0.3);
-  padding-left: 14px; display: flex; flex-direction: column; gap: 1px;
+  padding-left: 16px; display: flex; flex-direction: column; gap: 3px;
 }
-.gc-logo-name { color: var(--gc-white); font-size: 17px; font-weight: 700; line-height: 1.2; }
-.gc-logo-tag  { color: rgba(255,255,255,0.68); font-size: 12px; font-weight: 400; }
+.gc-logo-name { color: var(--gc-white); font-size: 20px; font-weight: 700; line-height: 1.2; }
+.gc-logo-tag  { color: rgba(255,255,255,0.68); font-size: 13px; font-weight: 400; }
 
 .gc-header-right { display: flex; align-items: center; gap: 8px; }
 
@@ -104,10 +104,11 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Accessibility btn — Autumn bg, white text (4.64:1 ✅ AA) */
 .gc-accessibility-btn {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 7px;
   background: var(--gc-autumn); color: var(--gc-white);
-  font-size: 12px; font-weight: 700;
-  padding: 8px 14px; border-radius: 20px;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 18px; border-radius: 24px;
+  border: 2px solid rgba(255,255,255,0.25);
   transition: background 0.15s; white-space: nowrap;
 }
 .gc-accessibility-btn:hover { background: var(--gc-autumn-dark); }
@@ -118,7 +119,7 @@ button { font-family: inherit; cursor: pointer; }
 .gc-nav {
   background: var(--gc-white);
   border-bottom: 1px solid var(--gc-border);
-  position: sticky; top: 68px; z-index: 99;
+  position: sticky; top: 84px; z-index: 99;
 }
 .gc-nav-inner {
   max-width: var(--gc-max); margin: 0 auto; padding: 0 24px;
@@ -129,7 +130,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .gc-nav-item {
   display: inline-flex; align-items: center;
-  padding: 13px 16px; font-size: 14px; font-weight: 600;
+  padding: 15px 20px; font-size: 14px; font-weight: 600;
   color: var(--gc-dark); border-bottom: 3px solid transparent;
   white-space: nowrap; transition: color 0.15s, border-color 0.15s;
   text-decoration: none;
@@ -364,9 +365,9 @@ button { font-family: inherit; cursor: pointer; }
   .gc-chat-note   { display: none; }
 }
 @media (max-width: 640px) {
-  .gc-header-inner { padding: 0 16px; height: 60px; }
-  .gc-logo-gc      { font-size: 30px; }
-  .gc-logo-name    { font-size: 15px; }
+  .gc-header-inner { padding: 0 16px; height: 68px; }
+  .gc-logo-gc      { font-size: 40px; }
+  .gc-logo-name    { font-size: 16px; }
   .gc-banner-text h1 { font-size: 20px; }
   .gc-nav-item     { padding: 11px 12px; font-size: 13px; }
   .gc-banner-meta  { display: none; }
