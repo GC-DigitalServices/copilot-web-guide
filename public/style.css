@@ -464,21 +464,126 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — tablet (≤960px)
    ============================================================ */
 @media (max-width: 960px) {
+
+  /* Main layout stacks */
   .gc-main { grid-template-columns: 1fr; }
   .gc-sidebar { border-right: none; border-bottom: 1px solid var(--gc-border); }
+
+  /* Topic cards go to 2-column grid on tablet */
+  .gc-sidebar { padding: 20px; }
+  .gc-sidebar h2 { margin-bottom: 12px; }
+  .gc-topics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .gc-topic { margin-bottom: 0; }
+
+  /* Footer 2 columns */
+  .gc-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
+  /* Chat embed height */
+  #copilot-embed { min-height: 520px; }
+  #copilot-embed iframe { min-height: 520px; }
 }
+
+/* ============================================================
+   RESPONSIVE — small tablet / large phone (≤780px)
+   ============================================================ */
 @media (max-width: 780px) {
+
+  /* Hide header clutter */
   .gc-quick-links { display: none; }
   .gc-socials     { display: none; }
   .gc-chat-note   { display: none; }
+
+  /* Accessibility btn — text hidden, icon only */
+  .gc-accessibility-btn span:not(svg) { display: none; }
+  .gc-accessibility-btn { padding: 9px 12px; }
+
+  /* Footer bottom links wrap tighter */
+  .gc-footer-bottom-links { gap: 12px; }
+  .gc-footer-bottom-links a { font-size: 12px; }
 }
+
+/* ============================================================
+   RESPONSIVE — mobile (≤640px)
+   ============================================================ */
 @media (max-width: 640px) {
-  .gc-header-inner { padding: 0 16px; height: 80px; }
-  .gc-logo-img     { height: 56px; }
-  .gc-banner-text h1 { font-size: 20px; }
-  .gc-nav-item     { padding: 11px 12px; font-size: 13px; }
-  .gc-banner-meta  { display: none; }
+
+  /* Header */
+  .gc-header-inner { padding: 0 14px; height: 72px; }
+  .gc-logo-img     { height: 48px; }
+
+  /* Nav — horizontal scroll, compact */
+  .gc-nav { top: 72px; }
+  .gc-nav-inner { padding: 0 14px; }
+  .gc-nav-item  { padding: 10px 12px; font-size: 13px; }
+
+  /* Hero fills screen minus compact header */
+  .gc-hero-photo { height: calc(100vh - 120px); }
+
+  /* Main content */
+  .gc-main { min-height: auto; }
+
+  /* Sidebar — single column cards on mobile */
+  .gc-sidebar { padding: 16px; }
+  .gc-topics-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .gc-topic { padding: 10px; }
+  .gc-topic-icon { width: 32px; height: 32px; }
+  .gc-topic-text strong { font-size: 13px; }
+  .gc-topic-text span   { font-size: 11px; }
+
+  /* Sidebar footer */
+  .gc-sidebar-footer { display: none; }
+
+  /* Chat header — compact */
+  .gc-chat-header { padding: 10px 14px; flex-wrap: wrap; gap: 8px; }
+  .gc-chat-header-text strong { font-size: 13px; }
+
+  /* Chat embed full height on mobile */
+  #copilot-embed { min-height: 420px; }
+  #copilot-embed iframe { min-height: 420px; }
+
+  /* Feedback — stack vertically */
+  .gc-feedback { padding: 14px 16px; }
+  .gc-feedback-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .gc-feedback-buttons { width: 100%; }
+  .gc-feedback-btn { flex: 1; justify-content: center; padding: 10px 12px; }
+  .gc-feedback-comment textarea { font-size: 14px; }
+  .gc-submit-btn { width: 100%; text-align: center; justify-content: center; padding: 11px; }
+
+  /* Colour strip slightly thicker on mobile for visibility */
+  .gc-colour-strip { height: 6px; }
+
+  /* Footer */
+  .gc-footer-cols { grid-template-columns: 1fr; gap: 28px; }
+  .gc-footer-inner { padding: 28px 16px; }
+  .gc-footer-col h3 { font-size: 16px; margin-bottom: 12px; }
+  .gc-footer-bottom { padding: 16px; }
+  .gc-footer-bottom-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-bottom: 12px;
+  }
+  .gc-footer-copy { font-size: 11px; }
+}
+
+/* ============================================================
+   RESPONSIVE — very small (≤380px)
+   ============================================================ */
+@media (max-width: 380px) {
+  .gc-header-inner { height: 64px; }
+  .gc-logo-img     { height: 42px; }
+  .gc-nav { top: 64px; }
+  .gc-nav-item { padding: 9px 10px; font-size: 12px; }
+  .gc-hero-photo { height: calc(100vh - 112px); }
+  .gc-accessibility-btn { display: none; }
 }
