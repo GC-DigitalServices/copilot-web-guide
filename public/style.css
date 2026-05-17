@@ -282,14 +282,17 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 #copilot-embed {
-  flex: 1; min-height: 480px; display: flex; flex-direction: column;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
-#copilot-embed iframe { width: 100%; flex: 1; border: none; min-height: 480px; }
 #webchat {
-  width: 100%; flex: 1; min-height: 520px;
-  display: flex; flex-direction: column;
+  width: 100%;
+  height: 560px;
+  flex-shrink: 0;
 }
-#webchat > div { flex: 1; min-height: 520px; }
+#webchat > div { height: 100%; }
 
 /* ============================================================
    FEEDBACK — Mustard top strip signals it's interactive
@@ -492,8 +495,7 @@ button { font-family: inherit; cursor: pointer; }
   .gc-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
 
   /* Chat embed height */
-  #copilot-embed { min-height: 520px; }
-  #copilot-embed iframe { min-height: 520px; }
+  #webchat { height: 480px; }
 }
 
 /* ============================================================
@@ -554,8 +556,7 @@ button { font-family: inherit; cursor: pointer; }
   .gc-chat-header-text strong { font-size: 13px; }
 
   /* Chat embed full height on mobile */
-  #copilot-embed { min-height: 420px; }
-  #copilot-embed iframe { min-height: 420px; }
+  #webchat { height: 420px; }
 
   /* Feedback — stack vertically */
   .gc-feedback { padding: 14px 16px; }
