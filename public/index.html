@@ -231,12 +231,24 @@
     try {
       const res = await fetch('/api/copilot-token');
       const data = await res.json();
+
+      const store = WebChat.createStore({}, ({ dispatch }) => next => action => {
+        if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+          dispatch({
+            type: 'WEB_CHAT/SEND_EVENT',
+            payload: { name: 'startConversation', type: 'event', value: {} }
+          });
+        }
+        return next(action);
+      });
+
       WebChat.renderWebChat({
         directLine: WebChat.createDirectLine({
           token: data.token,
           domain: 'https://europe.directline.botframework.com/v3/directline',
           webSockets: false
         }),
+        store,
         styleOptions: {
           primaryFont: "'Karla', sans-serif",
           accent: '#00534C',
