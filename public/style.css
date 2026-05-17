@@ -39,7 +39,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Nunito Sans', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Karla', 'Segoe UI', Arial, sans-serif;
   background: var(--gc-bg);
   color: var(--gc-dark);
   font-size: 15px;
